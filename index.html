@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI for Educators | Learning Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .gradient-bg { background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); }
+        .card-hover:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center gap-2">
+                    <div class="bg-blue-600 p-2 rounded-lg text-white">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">AI EDU HUB</span>
+                </div>
+                <div class="hidden md:flex space-x-8 font-medium text-slate-600">
+                    <a href="#curriculum" class="hover:text-blue-600 transition">Curriculum</a>
+                    <a href="#tools" class="hover:text-blue-600 transition">Toolbox</a>
+                    <a href="#prompts" class="hover:text-blue-600 transition">Prompt Lab</a>
+                    <a href="#activities" class="hover:text-blue-600 transition">For Students</a>
+                </div>
+                <button onclick="copyCurrentLink()" class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition">
+                    Share Hub
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-32 pb-16 gradient-bg text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">AI for Educators</h1>
+            <p class="text-xl text-blue-100 max-w-2xl mx-auto mb-10">
+                Master the tools, ethics, and strategies of Generative AI to save time and personalize learning.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#curriculum" class="bg-white text-blue-700 px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-50 transition">
+                    Start Learning
+                </a>
+                <a href="#activities" class="bg-blue-500 text-white border border-blue-400 px-8 py-3 rounded-xl font-bold hover:bg-blue-400 transition">
+                    Student Activities
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats/Quick Info -->
+    <div class="max-w-7xl mx-auto px-4 -mt-10 mb-20">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                <div class="bg-blue-100 p-4 rounded-full text-blue-600 text-2xl">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Save 5+ Hours</h3>
+                    <p class="text-slate-500 text-sm">Weekly on admin tasks</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                <div class="bg-green-100 p-4 rounded-full text-green-600 text-2xl">
+                    <i class="fas fa-user-graduate"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">1:1 Tutoring</h3>
+                    <p class="text-slate-500 text-sm">Personalize at scale</p>
+                </div>
+            </div>
+            <div class="bg-white p-6 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                <div class="bg-purple-100 p-4 rounded-full text-purple-600 text-2xl">
+                    <i class="fas fa-shield-halved"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg">Ethical Use</h3>
+                    <p class="text-slate-500 text-sm">Human-in-the-loop</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Curriculum -->
+    <section id="curriculum" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Core Learning Modules</h2>
+            <p class="text-slate-600">A structured pathway to becoming an AI-empowered educator.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Module 1 -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 card-hover">
+                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest">Module 01</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">AI Foundations</h3>
+                <ul class="text-slate-600 space-y-3 text-sm">
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>What are LLMs?</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>History of AI in Ed</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Hallucinations & Bias</li>
+                    <li><i class="fas fa-check text-green-500 mr-2"></i>Privacy Policies</li>
+                </ul>
+            </div>
+            <!-- Module 2 -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 card-hover">
+                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest">Module 02</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">Prompt Engineering</h3>
+                <ul class="text-slate-600 space-y-3 text-sm">
+                    <li><i class="fas fa-bolt text-yellow-500 mr-2"></i>The 4-Part Prompt</li>
+                    <li><i class="fas fa-bolt text-yellow-500 mr-2"></i>Role-Based Persona</li>
+                    <li><i class="fas fa-bolt text-yellow-500 mr-2"></i>Iterative Refining</li>
+                    <li><i class="fas fa-bolt text-yellow-500 mr-2"></i>Chain-of-Thought</li>
+                </ul>
+            </div>
+            <!-- Module 3 -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 card-hover">
+                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest">Module 03</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">Teacher Workflow</h3>
+                <ul class="text-slate-600 space-y-3 text-sm">
+                    <li><i class="fas fa-pencil text-blue-500 mr-2"></i>Lesson Planning</li>
+                    <li><i class="fas fa-pencil text-blue-500 mr-2"></i>Assessment Design</li>
+                    <li><i class="fas fa-pencil text-blue-500 mr-2"></i>Differentiation</li>
+                    <li><i class="fas fa-pencil text-blue-500 mr-2"></i>Parent Communcation</li>
+                </ul>
+            </div>
+            <!-- Module 4 -->
+            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200 card-hover">
+                <span class="text-blue-600 font-bold text-sm uppercase tracking-widest">Module 04</span>
+                <h3 class="text-xl font-bold mt-2 mb-4">Implementation</h3>
+                <ul class="text-slate-600 space-y-3 text-sm">
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i>AI Course Policies</li>
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i>AI Literacy for Kids</li>
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i>Human Verification</li>
+                    <li><i class="fas fa-star text-purple-500 mr-2"></i>Portfolio Building</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Toolbox -->
+    <section id="tools" class="py-16 bg-slate-900 text-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div>
+                    <h2 class="text-3xl font-bold mb-2">The AI Toolbox</h2>
+                    <p class="text-slate-400">Essential tools for every educational task.</p>
+                </div>
+                <div class="flex gap-2">
+                    <button class="bg-slate-800 px-4 py-2 rounded-lg text-sm hover:bg-slate-700 transition">Free Tools Only</button>
+                    <button class="bg-blue-600 px-4 py-2 rounded-lg text-sm hover:bg-blue-500 transition">View All 50+</button>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Tool Category 1 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-blue-400 font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-comment-dots"></i> Chatbots & Research
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>ChatGPT</span>
+                            <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Universal</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Perplexity AI</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Search</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Claude 3</span>
+                            <span class="text-xs bg-purple-500/20 text-purple-400 px-2 py-1 rounded">Analysis</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Category 2 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-green-400 font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-magic"></i> Lesson Design
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>MagicSchool.ai</span>
+                            <span class="text-xs bg-orange-500/20 text-orange-400 px-2 py-1 rounded">All-in-One</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Brisk Teaching</span>
+                            <span class="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded">Chrome Ext</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Diffit</span>
+                            <span class="text-xs bg-green-500/20 text-green-400 px-2 py-1 rounded">Differentiation</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Tool Category 3 -->
+                <div class="bg-slate-800 p-6 rounded-2xl border border-slate-700">
+                    <h4 class="text-red-400 font-bold mb-4 flex items-center gap-2">
+                        <i class="fas fa-image"></i> Visuals & Video
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Canva Magic</span>
+                            <span class="text-xs bg-pink-500/20 text-pink-400 px-2 py-1 rounded">Design</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Gamma</span>
+                            <span class="text-xs bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded">Presentations</span>
+                        </div>
+                        <div class="flex justify-between items-center bg-slate-700 p-3 rounded-xl">
+                            <span>Sora / Runway</span>
+                            <span class="text-xs bg-red-500/20 text-red-400 px-2 py-1 rounded">Video</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prompt Lab -->
+    <section id="prompts" class="py-16 max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold mb-4">Educator Prompt Lab</h2>
+            <p class="text-slate-600">Copy these "Master Prompts" into ChatGPT or Claude for instant results.</p>
+        </div>
+
+        <div class="space-y-6">
+            <!-- Prompt 1 -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm overflow-hidden relative">
+                <div class="flex justify-between items-start mb-4">
+                    <h4 class="font-bold text-lg text-blue-700">The "Level-Down" Differentiator</h4>
+                    <button onclick="copyPrompt('prompt1')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm flex items-center gap-1">
+                        <i class="far fa-copy"></i> Copy Prompt
+                    </button>
+                </div>
+                <div id="prompt1" class="bg-slate-50 p-4 rounded-xl text-slate-700 text-sm font-mono leading-relaxed">
+                    "I am teaching a 10th-grade Biology lesson on DNA replication. I have three students who read at a 5th-grade level. Rewrite this complex paragraph [Paste Text] for a 5th-grade reading level while keeping all scientific vocabulary (but providing parenthetical definitions). Create 3 comprehension questions at the end."
+                </div>
+            </div>
+
+            <!-- Prompt 2 -->
+            <div class="bg-white border border-slate-200 rounded-3xl p-6 shadow-sm overflow-hidden relative">
+                <div class="flex justify-between items-start mb-4">
+                    <h4 class="font-bold text-lg text-blue-700">AI-Resistant Assignment Generator</h4>
+                    <button onclick="copyPrompt('prompt2')" class="text-blue-600 hover:text-blue-800 font-semibold text-sm flex items-center gap-1">
+                        <i class="far fa-copy"></i> Copy Prompt
+                    </button>
+                </div>
+                <div id="prompt2" class="bg-slate-50 p-4 rounded-xl text-slate-700 text-sm font-mono leading-relaxed">
+                    "Review my current essay prompt: [Paste Prompt]. Now, suggest 3 modifications that make this assignment harder for AI to complete without personal student input. Incorporate requirements for: local context, recent current events (past 2 weeks), and a mandatory physical artifact or classroom observation component."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Student Activities -->
+    <section id="activities" class="py-16 bg-blue-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">Classroom Ready: Student Activities</h2>
+                <p class="text-slate-600">Bring AI into the learning experience ethically and critically.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Activity 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-blue-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-users-viewfinder text-blue-500 text-2xl"></i>
+                        <h3 class="text-xl font-bold">The Socratic Opponent</h3>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-sm">
+                        Students use a chatbot to debate a specific historical figure. The AI plays the figure, and students must use primary source evidence to challenge the AI's "memory."
+                    </p>
+                    <div class="bg-blue-50 rounded-xl p-4">
+                        <span class="text-xs font-bold text-blue-700 uppercase">Learning Outcome</span>
+                        <p class="text-sm text-blue-900 mt-1 italic">"Evaluate the accuracy of AI-generated historical personas."</p>
+                    </div>
+                </div>
+
+                <!-- Activity 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-md border-t-4 border-green-500">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fas fa-vial-circle-check text-green-500 text-2xl"></i>
+                        <h3 class="text-xl font-bold">The AI Error Hunt</h3>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-sm">
+                        Ask an AI to explain a complex math problem or scientific theory. Give the output to students and challenge them to find 3 "hallucinations" or logical errors in its reasoning.
+                    </p>
+                    <div class="bg-green-50 rounded-xl p-4">
+                        <span class="text-xs font-bold text-green-700 uppercase">Learning Outcome</span>
+                        <p class="text-sm text-green-900 mt-1 italic">"Develop critical thinking and fact-checking skills."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center gap-6 mb-8 text-xl">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="mb-2">Created for the AI for Educators Learning Path &copy; 2024</p>
+            <p class="text-sm">"Empowering educators to lead the next generation of learners."</p>
+        </div>
+    </footer>
+
+    <!-- Notification system for interactions -->
+    <div id="toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-6 py-3 rounded-full shadow-2xl opacity-0 transition-all pointer-events-none transform translate-y-10">
+        Copied to clipboard!
+    </div>
+
+    <script>
+        function copyPrompt(id) {
+            const text = document.getElementById(id).innerText;
+            const temp = document.createElement('textarea');
+            temp.value = text;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            
+            showToast("Prompt copied to clipboard!");
+        }
+
+        function copyCurrentLink() {
+            const temp = document.createElement('input');
+            temp.value = window.location.href;
+            document.body.appendChild(temp);
+            temp.select();
+            document.execCommand('copy');
+            document.body.removeChild(temp);
+            
+            showToast("Share link copied!");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.classList.remove('opacity-0', 'translate-y-10');
+            toast.classList.add('opacity-100', 'translate-y-0');
+            
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10');
+                toast.classList.remove('opacity-100', 'translate-y-0');
+            }, 2500);
+        }
+    </script>
+</body>
+</html>

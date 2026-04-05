@@ -28,11 +28,26 @@
             background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
             border: 1px solid #c7d2fe;
         }
+
+        .status-pulse {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: #10b981;
+            border-radius: 50%;
+            margin-right: 4px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0.5; }
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- Header with Apex Branding -->
     <header class="bg-white border-b-4 border-apex-gold sticky top-0 z-50 shadow-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
@@ -40,18 +55,18 @@
                 <div class="h-10 w-[1px] bg-slate-200 hidden md:block"></div>
                 <div>
                     <h1 class="text-lg font-black text-slate-900 tracking-tight leading-none uppercase">Faculty Development</h1>
-                    <p class="text-[10px] font-bold apex-gold tracking-[0.2em] uppercase mt-1">Gemini Fundamentals Hub</p>
+                    <p class="text-[10px] font-bold apex-gold tracking-[0.2em] uppercase mt-1">13-Week Gemini Hub</p>
                 </div>
             </div>
             
             <div class="flex items-center gap-6">
                 <div class="bg-slate-50 px-4 py-2 rounded-xl border border-slate-100 shadow-inner">
                     <div class="flex justify-between w-32 text-[8px] font-black text-slate-400 uppercase mb-1">
-                        <span>Mastery</span>
+                        <span>Course Completion</span>
                         <span id="progress-text">0 / 13</span>
                     </div>
                     <div class="w-32 bg-slate-200 rounded-full h-1 overflow-hidden">
-                        <div id="progress-bar" class="bg-apex-gold h-full transition-all duration-1000" style="width: 0%"></div>
+                        <div id="progress-bar" class="bg-apex-gold h-full transition-all duration-700" style="width: 0%"></div>
                     </div>
                 </div>
             </div>
@@ -60,25 +75,23 @@
 
     <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Sidebar Navigation -->
         <div class="lg:col-span-4 space-y-6">
             <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-                <h3 class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4">Curriculum Phases</h3>
-                <div id="phase-list" class="space-y-2"></div>
+                <h3 class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4">Training Phases</h3>
+                <div id="phase-list" class="grid grid-cols-2 gap-2"></div>
             </div>
 
             <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm">
-                <h3 class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4">Modules</h3>
-                <div id="module-list" class="space-y-2 max-h-[450px] overflow-y-auto custom-scroll pr-1"></div>
+                <h3 class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-4">Weekly Modules</h3>
+                <div id="module-list" class="space-y-2 max-h-[500px] overflow-y-auto custom-scroll pr-1"></div>
             </div>
         </div>
 
-        <!-- Detail Content Workspace -->
         <div class="lg:col-span-8 bg-white rounded-3xl border border-slate-200 shadow-xl overflow-hidden min-h-[750px]" id="module-detail">
             <div class="h-full flex flex-col items-center justify-center text-slate-400 p-12 text-center space-y-4">
-                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-4xl shadow-inner">🎓</div>
-                <h2 class="text-xl font-bold text-slate-800 tracking-tight">Select a module to begin your reflection</h2>
-                <p class="max-w-xs text-sm">Watch the official Google tutorials and document your Apex-specific implementation notes here.</p>
+                <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-4xl shadow-inner">📚</div>
+                <h2 class="text-xl font-bold text-slate-800 tracking-tight">Welcome to Apex Faculty Training</h2>
+                <p class="max-w-xs text-sm">Select a module from the sidebar to view the video references, discussion prompts, and upload your weekly activity.</p>
             </div>
         </div>
 
@@ -95,20 +108,21 @@
     </footer>
 
     <script>
+        // 13-Week Curriculum Data
         const modulesData = [
-            { id: 1, phase: 1, week: 1, title: 'The Curriculum Mapper', url: 'https://www.youtube.com/watch?v=kUq3B9R_rGo', activity: 'Map your syllabus against 2026 industry AI benchmarks.' },
-            { id: 2, phase: 1, week: 2, title: 'Meeting to Action Summary', url: 'https://www.youtube.com/watch?v=0-j-A61p104', activity: 'Create a structured action table from a faculty transcript.' },
-            { id: 3, phase: 1, week: 3, title: 'Guided Feedback Guardrails', url: 'https://www.youtube.com/watch?v=1F2WBC2a8gI', activity: 'Design a Socratic prompt for Apex thesis development.' },
-            { id: 4, phase: 2, week: 4, title: 'Live Literature Scan', url: 'https://www.youtube.com/watch?v=RiDkeAAAAZI', activity: 'Use Gemini Deep Research for latest pedagogical papers.' },
-            { id: 5, phase: 2, week: 5, title: 'Research Brief Podcast', url: 'https://www.youtube.com/watch?v=Fmc6xKH2WfM', activity: 'Generate an Audio Overview in NotebookLM.' },
-            { id: 6, phase: 2, week: 6, title: 'The Socratic Tutor', url: 'https://www.youtube.com/watch?v=6S8-e6_e_h4', activity: 'Build an AI Tutor grounded in "Humanity in Tech" readings.' },
-            { id: 7, phase: 3, week: 7, title: 'The Live Data Analyst', url: 'https://www.youtube.com/watch?v=fLM7bMTr2h4', activity: 'Anonymize Apex gradebook data to analyze engagement trends.' },
-            { id: 8, phase: 3, week: 8, title: 'Data Viz Infographic', url: 'https://www.youtube.com/watch?v=7V-w-6L_k74', activity: 'Design a visual dashboard for department outcomes.' },
-            { id: 9, phase: 3, week: 9, title: 'Visualizing Abstract Concepts', url: 'https://www.youtube.com/watch?v=9P-X-o8_f74', activity: 'Create visual metaphors for Neural Networks.' },
-            { id: 10, phase: 4, week: 10, title: 'Seminar Spark Generator', url: 'https://www.youtube.com/watch?v=mu8CHJOz7No', activity: 'Generate debate prompts for Innovation Ethics seminars.' },
-            { id: 11, phase: 4, week: 11, title: 'Pre-Submission Peer Review', url: 'https://www.youtube.com/watch?v=4P-o-9L_j74', activity: 'Automate rubric checks for creative student projects.' },
-            { id: 12, phase: 4, week: 12, title: 'Case Study Generator', url: 'https://www.youtube.com/watch?v=2V-k-L8_m74', activity: 'Generate a case study on Irving, TX tech infrastructure.' },
-            { id: 13, phase: 4, week: 13, title: 'Guest Speaker Debrief', url: 'https://www.youtube.com/watch?v=1F-z-G4_l74', activity: 'Synthesize Apex guest speaker insights into homework.' }
+            { id: 1, phase: 1, week: 1, title: 'AI Foundations & Literacy', url: 'https://www.youtube.com/watch?v=kUq3B9R_rGo', discussion: 'How does your current understanding of LLMs differ from a standard search engine?', activity: 'Submit your AI Literacy Self-Assessment results.' },
+            { id: 2, phase: 1, week: 2, title: 'Meeting to Action Mastery', url: 'https://www.youtube.com/watch?v=0-j-A61p104', discussion: 'Identify a recurring meeting in your department that would benefit most from AI transcription.', activity: 'Upload a sample Action Table generated from a mock transcript.' },
+            { id: 3, phase: 1, week: 3, title: 'Instructional Guardrails', url: 'https://www.youtube.com/watch?v=1F2WBC2a8gI', discussion: 'What are the ethical risks of allowing AI to handle student feedback without faculty oversight?', activity: 'Design a "Feedback Loop" prompt for your most difficult assignment.' },
+            { id: 4, phase: 2, week: 4, title: 'AI-Driven Research Scans', url: 'https://www.youtube.com/watch?v=RiDkeAAAAZI', discussion: 'Compare Gemini Deep Research results with a traditional library database search.', activity: 'Upload a 1-page summary of current pedagogical trends found via AI.' },
+            { id: 5, phase: 2, week: 5, title: 'NotebookLM Audio Briefs', url: 'https://www.youtube.com/watch?v=Fmc6xKH2WfM', discussion: 'In what scenarios is an audio summary more effective for faculty than a written brief?', activity: 'Submit a link or screenshot of a NotebookLM Audio Overview you created.' },
+            { id: 6, phase: 2, week: 6, title: 'The Socratic AI Tutor', url: 'https://www.youtube.com/watch?v=6S8-e6_e_h4', discussion: 'How can we ensure AI tutors encourage "productive struggle" rather than giving answers?', activity: 'Upload the system instructions for your custom Socratic Tutor.' },
+            { id: 7, phase: 3, week: 7, title: 'Data Analysis for Engagement', url: 'https://www.youtube.com/watch?v=fLM7bMTr2h4', discussion: 'Which student engagement metrics are currently the hardest for you to track manually?', activity: 'Submit an anonymized data visualization report.' },
+            { id: 8, phase: 3, week: 8, title: 'Advanced Data Viz', url: 'https://www.youtube.com/watch?v=7V-w-6L_k74', discussion: 'Discuss the importance of "Data Storytelling" in departmental presentations.', activity: 'Upload an infographic detailing student performance trends.' },
+            { id: 9, phase: 3, week: 9, title: 'Metaphorical Visualization', url: 'https://www.youtube.com/watch?v=9P-X-o8_f74', discussion: 'How do visual metaphors help bridge the gap for students learning abstract concepts?', activity: 'Create and upload an AI-generated visual aid for a complex theory.' },
+            { id: 10, phase: 4, week: 10, title: 'Ethical Seminar Sparks', url: 'https://www.youtube.com/watch?v=mu8CHJOz7No', discussion: 'Draft a debate prompt regarding AI ethics that you would use in a live class.', activity: 'Upload a set of 5 "Seminar Spark" prompts.' },
+            { id: 11, phase: 4, week: 11, title: 'Automated Rubric Checks', url: 'https://www.youtube.com/watch?v=4P-o-9L_j74', discussion: 'Should students be allowed to see AI-generated rubric pre-checks before submission?', activity: 'Submit a custom rubric formatted for AI assessment.' },
+            { id: 12, phase: 4, week: 12, title: 'Local Case Study Design', url: 'https://www.youtube.com/watch?v=2V-k-L8_m74', discussion: 'How can localizing case studies to Irving/Dallas improve student buy-in?', activity: 'Upload a 500-word localized case study generated with AI.' },
+            { id: 13, phase: 4, week: 13, title: 'Final Synthesis & Debrief', url: 'https://www.youtube.com/watch?v=1F-z-G4_l74', discussion: 'Reflect on the past 13 weeks. What is the single biggest shift in your teaching philosophy?', activity: 'Submit your "Final AI Implementation Plan" for the upcoming semester.' }
         ];
 
         const phases = [
@@ -118,12 +132,12 @@
             { id: 4, name: "Engagement", icon: "🤝" }
         ];
 
-        // APP STATE (Persistent per Session)
+        // Persistent State
         let state = {
             phase: 1,
             module: null,
             completed: new Set(),
-            comments: {}, // Module-Specific: Unique boxes for each of the 13 modules
+            comments: {}, 
             uploads: {}
         };
 
@@ -136,9 +150,9 @@
             const list = document.getElementById('phase-list');
             list.innerHTML = phases.map(p => `
                 <button onclick="changePhase(${p.id})" 
-                    class="w-full text-left p-4 rounded-xl border flex items-center gap-3 transition-all ${state.phase === p.id ? 'bg-apex-midnight text-white shadow-lg' : 'bg-white border-slate-200 hover:border-apex-gold'}">
-                    <span class="text-lg">${p.icon}</span>
-                    <span class="font-bold text-xs uppercase tracking-tight">${p.name}</span>
+                    class="w-full text-left p-3 rounded-xl border flex items-center gap-2 transition-all ${state.phase === p.id ? 'bg-apex-midnight text-white shadow-md' : 'bg-white border-slate-200 hover:border-apex-gold'}">
+                    <span class="text-sm">${p.icon}</span>
+                    <span class="font-bold text-[9px] uppercase tracking-tighter">${p.name}</span>
                 </button>
             `).join('');
         }
@@ -156,13 +170,18 @@
             const filtered = modulesData.filter(m => m.phase === state.phase);
             list.innerHTML = filtered.map(m => {
                 const isDone = state.completed.has(m.id);
+                const isActive = state.module === m.id;
                 return `
                     <div onclick="selectModule(${m.id})" 
-                        class="p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${state.module === m.id ? 'border-apex-gold bg-amber-50' : 'bg-white border-slate-100 hover:bg-slate-50'}">
-                        <div class="w-6 h-6 rounded-lg flex items-center justify-center text-[10px] font-black ${isDone ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-500'}">
+                        class="p-4 rounded-xl border cursor-pointer transition-all flex items-center gap-3 ${isActive ? 'border-apex-gold bg-amber-50' : 'bg-white border-slate-100 hover:bg-slate-50'}">
+                        <div class="w-8 h-8 rounded-lg flex items-center justify-center text-[10px] font-black ${isDone ? 'bg-emerald-500 text-white' : 'bg-slate-100 text-slate-500'}">
                             ${isDone ? '✓' : m.week}
                         </div>
-                        <p class="text-xs font-bold text-slate-700 ${isDone ? 'opacity-40' : ''}">${m.title}</p>
+                        <div class="flex-grow">
+                            <p class="text-[11px] font-black text-slate-400 uppercase tracking-widest">Week ${m.week}</p>
+                            <p class="text-xs font-bold text-slate-800">${m.title}</p>
+                        </div>
+                        ${isActive ? '<div class="w-1.5 h-1.5 bg-apex-gold rounded-full"></div>' : ''}
                     </div>
                 `;
             }).join('');
@@ -177,8 +196,14 @@
         function renderDetail() {
             const container = document.getElementById('module-detail');
             const m = modulesData.find(mod => mod.id === state.module);
+            
             if (!m) {
-                container.innerHTML = `<div class="h-full flex items-center justify-center text-slate-400">Select a module to view project details</div>`;
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-slate-400 p-12 text-center space-y-4">
+                        <div class="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center text-4xl shadow-inner">📚</div>
+                        <h2 class="text-xl font-bold text-slate-800 tracking-tight">Phase ${state.phase} Selected</h2>
+                        <p class="max-w-xs text-sm">Choose a specific week from the sidebar to start your lesson.</p>
+                    </div>`;
                 return;
             }
 
@@ -187,62 +212,74 @@
             const currentFile = state.uploads[m.id] || null;
 
             container.innerHTML = `
-                <div class="animate-content p-8 md:p-10 space-y-8">
+                <div class="animate-content p-8 md:p-10 space-y-8 h-full overflow-y-auto custom-scroll">
                     <header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
                         <div>
-                            <span class="text-[9px] font-black bg-apex-gold text-white px-2 py-0.5 rounded-full uppercase tracking-widest">Week ${m.week}</span>
+                            <span class="text-[9px] font-black bg-apex-gold text-white px-2 py-0.5 rounded-full uppercase tracking-widest">Week ${m.week} | ${phases.find(p => p.id === m.phase).name}</span>
                             <h2 class="text-3xl font-black text-slate-900 mt-2 tracking-tight">${m.title}</h2>
                         </div>
-                        <a href="${m.url}" target="_blank" class="px-5 py-3 bg-apex-midnight text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg">Watch Tutorial</a>
+                        <a href="${m.url}" target="_blank" rel="noopener noreferrer" 
+                           class="px-5 py-3 bg-apex-midnight text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-slate-800 transition-all shadow-lg flex items-center gap-2 shrink-0">
+                            Watch Tutorial <span class="text-xs">↗</span>
+                        </a>
                     </header>
 
                     <div class="bg-slate-50 border border-slate-100 rounded-2xl p-6">
-                        <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-widest mb-3">Project Assignment</h4>
-                        <p class="text-sm text-slate-600 font-medium italic">${m.activity}</p>
+                        <div class="flex items-center gap-2 mb-3">
+                            <span class="text-lg">💬</span>
+                            <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-widest">Discussion Prompt</h4>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed font-semibold italic">"${m.discussion}"</p>
                     </div>
 
-                    <!-- REFLECTION AREA: UI Refinement with Indigo Background -->
-                    <div class="reflection-area rounded-2xl p-6 shadow-sm">
+                    <div class="reflection-area rounded-2xl p-6 shadow-sm border border-indigo-100">
                         <div class="flex justify-between items-center mb-3">
                             <h4 class="text-[9px] font-black text-indigo-900 uppercase tracking-widest flex items-center gap-2">
                                 <span class="text-base">✍️</span> Reflection & Learning Notes
                             </h4>
-                            <span class="text-[8px] font-bold text-indigo-500 uppercase tracking-tighter opacity-70">Saved automatically as you type</span>
+                            <span class="text-[8px] font-bold text-indigo-500 uppercase tracking-tighter flex items-center">
+                                <span class="status-pulse"></span> Saved automatically
+                            </span>
                         </div>
-                        <!-- AUTO-SAVING LOGIC: Module-specific state storage using oninput -->
                         <textarea 
                             oninput="saveComment(${m.id}, this.value)"
-                            placeholder="Describe how you will apply these techniques to your specific course or department workflow at Apex..." 
-                            class="w-full h-40 bg-white/80 backdrop-blur-sm border border-indigo-200 rounded-xl p-4 text-sm text-slate-700 focus:ring-4 focus:ring-indigo-100 outline-none transition-all shadow-inner placeholder:text-indigo-300"
+                            placeholder="Type your response to the discussion prompt and any implementation notes here..." 
+                            class="w-full h-32 bg-white/80 backdrop-blur-sm border border-indigo-200 rounded-xl p-4 text-sm text-slate-700 focus:ring-4 focus:ring-indigo-100 outline-none transition-all shadow-inner placeholder:text-indigo-300 resize-none"
                         >${currentComment}</textarea>
                     </div>
 
-                    <!-- ACTIVITY UPLOAD -->
                     <div class="space-y-3">
-                        <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-widest px-1">Institutional Submission</h4>
+                        <h4 class="text-[9px] font-black text-slate-400 uppercase tracking-widest px-1">Upload Activity: <span class="text-slate-600">${m.activity}</span></h4>
                         <div onclick="document.getElementById('fileInput').click()" 
                             class="border-2 border-dashed border-slate-200 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer hover:border-apex-gold hover:bg-amber-50 transition-all">
                             <input type="file" id="fileInput" class="hidden" onchange="handleUpload(${m.id}, this)">
                             ${currentFile ? `
-                                <p class="text-emerald-600 font-bold text-sm">✓ ${currentFile}</p>
-                                <p class="text-[9px] text-slate-400 uppercase mt-1">Click to replace evidence</p>
+                                <div class="text-emerald-600 flex flex-col items-center">
+                                    <span class="text-2xl mb-1">📄</span>
+                                    <p class="font-bold text-xs">${currentFile}</p>
+                                    <p class="text-[9px] text-slate-400 uppercase mt-1">File Uploaded successfully</p>
+                                </div>
                             ` : `
-                                <p class="text-slate-400 font-bold text-sm">Upload Project Evidence</p>
-                                <p class="text-[10px] text-slate-300 mt-1">Syllabus maps, prompts, or data exports</p>
+                                <span class="text-2xl mb-2 grayscale opacity-40">📤</span>
+                                <p class="text-slate-400 font-bold text-sm">Drop file or click to upload</p>
+                                <p class="text-[10px] text-slate-300 mt-1">PDF, DOCX, or Image evidence</p>
                             `}
                         </div>
                     </div>
 
                     <button onclick="toggleDone(${m.id})" 
                         class="w-full py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-all ${isDone ? 'bg-emerald-50 text-emerald-600 border border-emerald-100' : 'bg-apex-gold text-white shadow-xl hover:scale-[1.01]'}">
-                        ${isDone ? 'Module Certified & Completed' : 'Certify Module Completion'}
+                        ${isDone ? 'Module Certified & Completed' : 'Certify Week ' + m.week + ' Completion'}
                     </button>
+                    
+                    <div class="pt-4 text-center border-t border-slate-100">
+                        <p class="text-[8px] text-slate-300 font-bold uppercase tracking-widest">Apex Institute Faculty Certification Program</p>
+                    </div>
                 </div>
             `;
         }
 
         function saveComment(moduleId, text) {
-            // Notes Persistence: Saves to comments object in state instantly
             state.comments[moduleId] = text;
         }
 
@@ -265,8 +302,10 @@
         function updateProgress() {
             const count = state.completed.size;
             const percent = (count / 13) * 100;
-            document.getElementById('progress-text').textContent = `${count} / 13`;
-            document.getElementById('progress-bar').style.width = percent + '%';
+            const textElem = document.getElementById('progress-text');
+            const barElem = document.getElementById('progress-bar');
+            if(textElem) textElem.textContent = `${count} / 13`;
+            if(barElem) barElem.style.width = percent + '%';
         }
 
         window.onload = init;
